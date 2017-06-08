@@ -91,6 +91,8 @@ jQuery(document).ready(function($){
         }
         item = '';
     })
+
+
 });
 
 function toggle_panel_visibility ($lateral_panel, $background_layer, $body) {
