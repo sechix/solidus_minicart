@@ -67,6 +67,7 @@ jQuery(document).ready(function($){
     $cart_trigger.on('click', function(event){
         event.preventDefault();
         $.lockBody();
+        $('nav').addClass('nav-zero');
         toggle_panel_visibility($lateral_cart, $shadow_layer, $('body'));
     });
 
@@ -76,12 +77,14 @@ jQuery(document).ready(function($){
         $menu_navigation.removeClass('speed-in');
         toggle_panel_visibility($lateral_cart, $shadow_layer, $('body'));
         $.unlockBody();
+        $('nav').removeClass('nav-zero');
     });
 
     // Close lateral cart or lateral menu
     $shadow_layer.on('click', function(){
         $shadow_layer.removeClass('is-visible');
         $.unlockBody();
+        $('nav').removeClass('nav-zero');
         // firefox transitions break when parent overflow is changed, so we need to wait for the end of the trasition to give the body an overflow hidden
         if( $lateral_cart.hasClass('speed-in') ) {
             $lateral_cart.removeClass('speed-in');
