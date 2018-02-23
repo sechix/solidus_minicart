@@ -9,6 +9,50 @@ jQuery(document).ready(function($){
         divs = $('#product-variants .variant-options'),
         selected = divs.find('a.selected');
 
+    /*==============================================================*/
+    // Esta es el inicio de la funcion para bloquear
+    // /*==============================================================*/
+    // // No body scrolling on panel
+    // /*==============================================================*/
+
+    var $docEl = $('html, body'),
+        $wrap = $('#wrapper'),
+        scrollTop;
+
+
+    $.lockBody = function() {
+        if(window.pageYOffset) {
+            scrollTop = window.pageYOffset;
+
+            $wrap.css({
+                top: - (scrollTop)
+            });
+        }
+
+        $docEl.css({
+            height: "100%",
+            overflow: "hidden"
+        });
+    }
+
+    $.unlockBody = function() {
+        $docEl.css({
+            height: "",
+            overflow: ""
+        });
+
+        $wrap.css({
+            top: ''
+        });
+
+        window.scrollTo(0, scrollTop);
+        window.setTimeout(function () {
+            scrollTop = null;
+        }, 0);
+
+    }
+
+    // /*==============================================================*/
 
     $form_add_to_cart.on('submit', function(event){
         // Refresh minicart count
@@ -22,6 +66,7 @@ jQuery(document).ready(function($){
 
     $cart_trigger.on('click', function(event){
         event.preventDefault();
+        $.lockBody();
         toggle_panel_visibility($lateral_cart, $shadow_layer, $('body'));
     });
 
@@ -30,11 +75,13 @@ jQuery(document).ready(function($){
         //close lateral menu (if it's open)
         $menu_navigation.removeClass('speed-in');
         toggle_panel_visibility($lateral_cart, $shadow_layer, $('body'));
+        $.unlockBody();
     });
 
     // Close lateral cart or lateral menu
     $shadow_layer.on('click', function(){
         $shadow_layer.removeClass('is-visible');
+        $.unlockBody();
         // firefox transitions break when parent overflow is changed, so we need to wait for the end of the trasition to give the body an overflow hidden
         if( $lateral_cart.hasClass('speed-in') ) {
             $lateral_cart.removeClass('speed-in');
