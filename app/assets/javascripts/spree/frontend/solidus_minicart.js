@@ -56,7 +56,7 @@ jQuery(document).ready(function($){
 
     $form_add_to_cart.on('submit', function(event){
         // Refresh minicart count
-
+        $.magnificPopup.close();
         var selected = divs.find('a.selected');
         if (selected.length == divs.length) {
             toggle_panel_visibility($lateral_cart, $shadow_layer, $('body'));
