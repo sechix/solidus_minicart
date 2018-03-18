@@ -62,6 +62,8 @@ jQuery(document).ready(function($){
         if (selected.length == divs.length) {
             toggle_panel_visibility($lateral_cart, $shadow_layer, $('body'));
             $("#progress").slideDown();
+            $('#form_dynamic_cart').scrollTop($('#form_dynamic_cart')[0].scrollHeight);
+
         }
     });
 
