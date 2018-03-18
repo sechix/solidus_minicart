@@ -62,9 +62,6 @@ jQuery(document).ready(function($){
         if (selected.length == divs.length) {
             toggle_panel_visibility($lateral_cart, $shadow_layer, $('body'));
             $("#progress").slideDown();
-            var element = document.getElementById('#" + yourDiv.Id + "');
-            element.scrollTop = element.scrollHeight;
-
         }
     });
 
@@ -139,10 +136,11 @@ jQuery(document).ready(function($){
     $(document).on("ajax:success", "form[data-remote]", function(){
         if(item.length > 0) {
             item.parent().children($("div.loading")).css({"display": "none", "visibility": "hidden"});
-            item.css({"visibility": "visible", "display": "inline"});;
+            item.css({"visibility": "visible", "display": "inline"});
+            $('#form_dynamic_cart').scrollTop($('#form_dynamic_cart')[0].scrollHeight);
+
         } else {
             $("#progress").slideUp();
-            $('#form_dynamic_cart').scrollTop($('#form_dynamic_cart').scrollHeight);
         }
         item = '';
     })
