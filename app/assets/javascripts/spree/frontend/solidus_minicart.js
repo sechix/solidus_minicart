@@ -137,8 +137,6 @@ jQuery(document).ready(function($){
         if(item.length > 0) {
             item.parent().children($("div.loading")).css({"display": "none", "visibility": "hidden"});
             item.css({"visibility": "visible", "display": "inline"});
-            $('#form_dynamic_cart').scrollTop($('#form_dynamic_cart')[0].scrollHeight);
-
         } else {
             $("#progress").slideUp();
         }
