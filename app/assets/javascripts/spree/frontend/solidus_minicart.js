@@ -62,7 +62,8 @@ jQuery(document).ready(function($){
         if (selected.length == divs.length) {
             toggle_panel_visibility($lateral_cart, $shadow_layer, $('body'));
             $("#progress").slideDown();
-            $('#form_dynamic_cart').scrollTop($('#form_dynamic_cart')[0].scrollHeight);
+            var element = document.getElementById('#" + yourDiv.Id + "');
+            element.scrollTop = element.scrollHeight;
 
         }
     });
@@ -140,6 +141,7 @@ jQuery(document).ready(function($){
             item.parent().children($("div.loading")).css({"display": "none", "visibility": "hidden"});
             item.css({"visibility": "visible", "display": "inline"});;
         } else {
+            $('#form_dynamic_cart').scrollTop( $('#form_dynamic_cart').height() );
             $("#progress").slideUp();
         }
         item = '';
