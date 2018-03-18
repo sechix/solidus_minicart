@@ -142,8 +142,7 @@ jQuery(document).ready(function($){
             item.css({"visibility": "visible", "display": "inline"});;
         } else {
             $("#progress").slideUp();
-            $("#form_dynamic_cart").animate({ scrollTop: $("#form_dynamic_cart")[0].scrollHeight }, 1000);
-
+            $('#form_dynamic_cart').scrollTop($('#form_dynamic_cart').scrollHeight);
         }
         item = '';
     })
