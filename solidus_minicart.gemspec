@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
 
   # doesn't work with rails 4.1.10
-  s.add_dependency 'rails', '~> 8.0'
+  s.add_dependency 'rails', '>= 6'
 
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'factory_girl_rails'
